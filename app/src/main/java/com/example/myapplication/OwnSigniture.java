@@ -7,10 +7,6 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
 public class OwnSigniture extends AppCompatActivity {
     /**the name of owner.*/
     private String name;
@@ -50,7 +46,7 @@ public class OwnSigniture extends AppCompatActivity {
         sex = sexT.getText().toString();
         EditText descriptionT = findViewById(R.id.description);
         description = descriptionT.getText().toString();
-        EditText wordsT = findViewById(R.id.signitrue);
+        EditText wordsT = findViewById(R.id.signature);
         words = wordsT.getText().toString();
         putOn(makeTag());
     }

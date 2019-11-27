@@ -57,6 +57,8 @@ public class NFC extends Activity{
          * save change button.
          */
         btnWrite = findViewById(R.id.save);
+        OwnSigniture newTag = new OwnSigniture();
+        final String toWrite = newTag.makeTag();
 
         btnWrite.setOnClickListener(new View.OnClickListener()
         {
@@ -66,7 +68,8 @@ public class NFC extends Activity{
                     if(myTag == null) {
                         Toast.makeText(context, ERROR_DETECTED, Toast.LENGTH_LONG).show();
                     } else {
-                        write(message.getText().toString(), myTag);
+                        //write(message.getText().toString(), myTag);
+                        write(toWrite, myTag);
                         Toast.makeText(context, WRITE_SUCCESS, Toast.LENGTH_LONG ).show();
                     }
                 } catch (IOException e) {
@@ -117,7 +120,7 @@ public class NFC extends Activity{
         if (msgs == null || msgs.length == 0) return;
 
         //String text = "";
-//        String tagId = new String(msgs[0].getRecords()[0].getType());
+        //rString tagId = new String(msgs[0].getRecords()[0].getType());
         byte[] payload = msgs[0].getRecords()[0].getPayload();
         String textEncoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTF-16"; // Get the Text Encoding
         int languageCodeLength = payload[0] & 0063; // Get the Language Code, e.g. "en"
